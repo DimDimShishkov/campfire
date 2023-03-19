@@ -1,0 +1,140 @@
+.parameters {
+  width: 100%;
+  max-width: 1200px;
+  padding: 30px 0 0;
+  margin: 0 auto;
+}
+.parameters__heading {
+  margin: 0 0 20px;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 34px;
+  text-align: left;
+  color: #ff3c00;
+}
+
+.parameters__description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: left;
+  margin: 0;
+}
+
+.parameters__form {
+  margin: 10px 0 0;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 100%;
+}
+
+.parameters__items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.parameters__item {
+  display: grid;
+  grid-template-columns: 200px 400px 150px;
+  grid-template-rows: 100px;
+  gap: 30px;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.parameters__status {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.parameters__title {
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 34px;
+  margin: 0;
+}
+
+.parameters__subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 0;
+  text-align: left;
+}
+.parameters__values {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.parameters__value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.parameters__button {
+  background-color: black;
+  color: wheat;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  line-height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.parameters__result {
+  background-color: black;
+  color: wheat;
+  border: none;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  line-height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.parameters__error {
+  position: absolute;
+  font-size: 12px;
+  line-height: 12px;
+  color: red;
+  top: 70px;
+  left: -10px;
+  right: 10px;
+  margin: 0;
+  width: 200px;
+}
+.parameters__submit {
+  background: rgb(103, 0, 1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: 2px solid #ff6701;
+  margin-top: auto;
+  color: rgb(255, 255, 255);
+  transition: all 0.3s ease;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+}

@@ -1,0 +1,221 @@
+.abilities {
+    width: 100%;
+    max-width: 1200px;
+    padding: 30px 0 0;
+    margin: 0 auto;
+}
+
+.abilities__heading {
+    margin: 0 0 20px;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 34px;
+    text-align: left;
+    color: #ff3c00;
+}
+
+.abilities__description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    text-align: left;
+    margin: 0;
+}
+
+.abilities__containers {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: 600px;
+    /* margin-right: 30px; */
+    padding: 0;
+    /* width: 578px; */
+}
+
+.abilities__container {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.abilities__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    line-height: 20px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.abilities__line {
+    background: rgba(133, 110, 96, 0.5);
+    height: 1px;
+    margin: 0 10px;
+    width: 100%;
+}
+
+.abilities__items {
+    display: flex;
+    gap: 10px;
+}
+
+.abilities__item {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    position: relative;
+    flex: 1 1;
+    margin-bottom: 0;
+    /* max-width: 50%; */
+}
+
+.abilities__text-item {
+    /* background: rgb(103, 0, 1); */
+    border: 1px solid #ff6701;
+    border-right: none;
+    border-radius: 25px 0 0 25px;
+    padding: 5px 0 5px 30px;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.abilities__check-item {
+    background: rgb(103, 0, 1);
+    border-radius: 20px 0 0 20px;
+    display: flex;
+    align-items: center;
+    padding: 4px 0 4px 20px;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.abilities__subtitle {
+    font-size: 11px;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    padding: 0;
+    text-align: left;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+.abilities__number-item {
+    background: rgb(103, 0, 1);
+    border: 1px solid #ff6701;
+    border-radius: 5px;
+    min-width: 46px;
+    padding: 4px 0 3px;
+}
+
+.abilities__subnumber {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 27px;
+    margin: 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.abilities__label {
+    position: absolute;
+    background: none;
+    border: 1px solid #ff6701;
+    height: 14px;
+    width: 14px;
+    border-radius: 50%;
+    left: 5px;
+    top: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.abilities__label_active {
+    background: rgb(103, 0, 1);
+}
+.abilities__input {
+    display: none;
+}
+.abilities__additional {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 350px;
+    margin: 0 auto;
+}
+
+.abilities__stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 100%;
+}
+.abilities__vit {
+    /* width: 100%; */
+    /* width: 80px; */
+    position: relative;
+}
+
+.abilities-block__shield {
+    height: 100%;
+    left: 0;
+    /* position: absolute; */
+    top: 0;
+    width: 100%;
+    /* width: 48px; */
+    /* height: 60px; */
+}
+
+.abilities__text {
+    margin: 0;
+    /* color: #20222c; */
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.abilities__text_pc {
+    position: absolute;
+    top: 15px;
+    left: 17px;
+}
+.abilities__text_desc {
+    position: absolute;
+    top: 30px;
+    left: 17px;
+}
+.abilities__stat {
+    background: rgb(103, 0, 1);
+    padding: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 10px;
+    width: 100px;
+    box-sizing: border-box;
+    border: 2px solid #ff6701;
+}
+.abilities__button {
+    margin-top: 80px;
+    color: rgb(255, 255, 255);
+    transition: all 0.3s ease;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.abilities__button:hover {
+    opacity: 0.8;
+}

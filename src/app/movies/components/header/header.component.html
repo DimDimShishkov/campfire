@@ -1,0 +1,13 @@
+<div class="header" [ngClass]="{ header_overlay: scrollPosition > 80 }">
+    <a
+        href="https://docs.google.com/document/d/1NwrwG1uq9bGVG2U2BvIbsbJhat0QAoMF/edit#heading=h.3dy6vkm"
+        target="_blank"
+        rel="noreferrer"
+        class="header__image-link"
+    >
+        <img src="assets/campfire.png" alt="костер" class="header__image" />
+    </a>
+    <button class="header__button" (click)="openModal()">
+        {{ isModalOpen ? 'Скрыть лист' : 'Показать персонажа' }}
+    </button>
+</div>
