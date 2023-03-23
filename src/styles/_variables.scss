@@ -3,3 +3,43 @@ $black: #000000;
 $gray: #797979;
 $main-blue: #3f51b5;
 $main-red: #f44366;
+
+@mixin section {
+  width: 100%;
+  max-width: 1200px;
+  padding: 80px 0 0;
+  margin: 0 auto;
+  color: beige;
+}
+@mixin section__heading {
+  margin: 0 0 20px;
+  font-weight: 600;
+  font-size: 25px;
+  line-height: 34px;
+  text-align: left;
+  color: #ff3c00;
+}
+@mixin section__description {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  text-align: left;
+  margin: 0;
+}
+@mixin section__description_additional {
+  margin: 10px 0;
+}
+@mixin accordion {
+  margin: 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@mixin accordion-item {
+  border: 1px solid rgb(245, 222, 179);
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}

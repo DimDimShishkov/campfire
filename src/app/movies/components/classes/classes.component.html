@@ -1,0 +1,101 @@
+<section class="section">
+  <h2 class="section__heading">Выбор класса</h2>
+  <p class="section__description">Следующим этапом нужно выбрать класс</p>
+  <p class="section__description">Сейчас доступны немногие классы и подклассы.</p>
+  <p class="section__description">Находить новые надо будет за пределами костра, открывая их для всех игроков.</p>
+  <p class="section__description">
+    На данный момент доступны при создании персонажа Воин, Волшебник, Плут, Жрец, Следопыт и Варвар.
+  </p>
+  <cdk-accordion class="accordion">
+    <cdk-accordion-item
+      *ngFor="let classItem of classesArr; let index = index"
+      #accordionItem="cdkAccordionItem"
+      class="accordion-item"
+      role="button"
+      tabindex="0"
+      [attr.id]="'accordion-header-' + index"
+      [attr.aria-expanded]="accordionItem.expanded"
+      [attr.aria-controls]="'accordion-body-' + index"
+    >
+      <div class="accordion-item__heading">
+        <span
+          class="race-item__span"
+          [ngClass]="{ 'race-item__span_active': accordionItem.expanded }"
+          (click)="accordionItem.toggle()"
+        ></span>
+        <h3 class="race-item__title">{{ classItem.name }}</h3>
+        <button class="race-item__submit-button" (click)="handleSelectClass(classItem.name)">Выбрать</button>
+      </div>
+      <div
+        class="race-item__body"
+        role="region"
+        [style.display]="accordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-' + index"
+        [attr.aria-labelledby]="'accordion-header-' + index"
+      >
+        <p class="race-item__item">Описание</p>
+        <p class="race-item__item">{{ classItem.description }}</p>
+        <p class="race-item__item">Совет</p>
+        <p class="race-item__item">{{ classItem.advice }}</p>
+        <p class="race-item__item">Кость хитов</p>
+        <p class="race-item__item">{{ classItem.hitDice }}</p>
+        <p class="race-item__item">Хиты на уровень</p>
+        <p class="race-item__item">{{ classItem.hitPerLvl }}</p>
+        <p class="race-item__item">Доспехи</p>
+        <p class="race-item__item">{{ classItem.armors }}</p>
+        <p class="race-item__item">Оружие</p>
+        <p class="race-item__item">{{ classItem.weapons }}</p>
+        <p class="race-item__item">Навыки</p>
+        <p class="race-item__item">{{ classItem.skills }}</p>
+        <p class="race-item__item">{{ classItem.evolutionName }}</p>
+        <div class="race-item__abilities">
+          <div class="class-item__items">
+            <p class="class-item__main-item">Уровень</p>
+            <p class="class-item__main-item">
+              БМ
+              <span> Бонус мастерства - количество очков добавляемых при броске на атаку </span>
+            </p>
+            <p class="class-item__main-item">
+              {{ classItem.feature }}
+              <span> {{ classItem.featureDesc }} </span>
+            </p>
+            <p class="class-item__main-item">Умения</p>
+            <ng-container *ngFor="let item of classItem.evolution">
+              <p class="class-item__item">{{ item.level }}</p>
+              <p class="class-item__item">{{ item.profBonus }}</p>
+              <p class="class-item__item">{{ item.featureBonus }}</p>
+              <p class="class-item__item">{{ item.abilities }}</p>
+            </ng-container>
+          </div>
+        </div>
+        <p class="race-item__item">Умения</p>
+        <div class="race-item__items">
+          <ng-container *ngFor="let item of classItem.abilities">
+            <div>
+              <p class="race-item__item">{{ item.name }}</p>
+              <p class="race-item__item">{{ item.availableFrom }}</p>
+            </div>
+            <p class="race-item__item">{{ item.description }}</p>
+          </ng-container>
+        </div>
+        <p class="race-item__item">{{ classItem.peculiaritiesName }}</p>
+        <div class="class-item__abilities">
+          <ng-container *ngFor="let item of classItem.peculiarities">
+            <p class="race-item__item">{{ item.name }}</p>
+            <div class="race-item__items">
+              <p class="race-item__item">Описание</p>
+              <p class="race-item__item">{{ item.description }}</p>
+              <ng-container *ngFor="let ability of item.abilities">
+                <div>
+                  <p class="race-item__item">{{ ability.name }}</p>
+                  <p class="race-item__item">{{ ability.availableFrom }}</p>
+                </div>
+                <p class="race-item__item">{{ ability.description }}</p>
+              </ng-container>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </cdk-accordion-item>
+  </cdk-accordion>
+</section>

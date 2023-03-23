@@ -1,4 +1,29 @@
 <section className="abilities">
     <h2 className="abilities__heading">Распределение навыков</h2>
-    <!-- {info} -->
+
+    <ng-container
+        *ngIf="parameters.length && race !== 'Подлежит выбору' && character !== 'Подлежит выбору'; else templateA"
+    >
+        <div></div>
+    </ng-container>
+
+    <ng-template #templateA>
+        <ng-container
+            *ngIf="!parameters.length && race !== 'Подлежит выбору' && character !== 'Подлежит выбору'; else templateB"
+        >
+            <p class="abilities__description">Раса и класс выбраны. Остаётся распределить параметры.</p>
+        </ng-container>
+    </ng-template>
+
+    <ng-template #templateB>
+        <ng-container
+            *ngIf="parameters.length && (race === 'Подлежит выбору' || character === 'Подлежит выбору'); else templateC"
+        >
+            <p class="abilities__description">Параметры распределены. Остаётся выбрать расу и класс.</p>
+        </ng-container>
+    </ng-template>
+
+    <ng-template #templateC>
+        <p class="abilities__description">Сперва требуется распределить параметры, выбрать расу и класс.</p>
+    </ng-template>
 </section>

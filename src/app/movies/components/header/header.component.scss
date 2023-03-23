@@ -1,53 +1,53 @@
 .header {
-    box-sizing: border-box;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background: rgb(47, 46, 49);
-    border-bottom: 1px solid white;
-    transition: all 0.3s ease;
+  box-sizing: border-box;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgb(47, 46, 49);
+  border-bottom: 1px solid white;
+  transition: all 0.3s ease;
 }
 
 .header_overlay {
-    background: rgba(211, 114, 35, 0.6);
+  background: rgba(211, 114, 35, 0.6);
 }
 
 .header__image-link {
-    width: 40px;
-    height: 40px;
-    background-color: rgb(211, 114, 35);
-    border-radius: 50%;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(211, 114, 35);
+  border-radius: 50%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .header__image {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 .header__text {
-    margin: 0;
+  margin: 0;
 }
 .header__button {
-    border: none;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 10px;
-    border-radius: 10px;
-    color: beige;
-    font-size: 14px;
-    text-align: justify;
-    margin: 0;
-    font-weight: 700;
-    line-height: 15px;
+  border: none;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px;
+  border-radius: 10px;
+  color: beige;
+  font-size: 14px;
+  text-align: justify;
+  margin: 0;
+  font-weight: 700;
+  line-height: 15px;
 }

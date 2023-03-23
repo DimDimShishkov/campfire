@@ -1,0 +1,37 @@
+<section class="section">
+  <h2 class="section__heading">Распределение параметров</h2>
+  <p class="section__description">Теперь вы знаете расу.</p>
+  <p class="section__description">
+    Далее вам нужно распределить параметры, чтобы узнать, в чём ваш персонаж хорош, а в чём нет.
+  </p>
+  <p class="section__description">
+    Чтобы распределить параметры, можно перетащить значения 15, 14, 13, 12, 10, 8 в ячейки или расставить вручную.
+  </p>
+  <p class="section__description">Главное требование, чтобы сумма всех очков не превышала 75 очков.</p>
+  <p class="section__description">Рекомендуется значение параметра не меньше 8 и не больше 15.</p>
+  <form class="parameters__form" (ngSubmit)="handleSubmitForm()">
+    <div class="parameters__items">
+      <div class="parameters__item" *ngFor="let parameter of parametersArr; let index = index">
+        <div class="parameters__status">
+          <h4 class="parameters__title">{{ parameter.nameRU }}</h4>
+          <p class="parameters__title">{{ parameter.value | bonus }}</p>
+        </div>
+        <p class="parameters__subtitle">{{ parameter.description }}</p>
+        <div class="parameters__values">
+          <div>
+            <p class="parameters__subtitle">Выставите значение</p>
+          </div>
+          <div class="parameters__value">
+            <button class="parameters__button" (click)="handleChangeSpecial(parameter.nameEN + '-decrease')">-</button>
+            <p class="parameters__result">{{ parameter.value }}</p>
+            <button class="parameters__button" (click)="handleChangeSpecial(parameter.nameEN + '-increase')">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parameters__items">
+      <p>Осталось очков: {{ 75 - summaryParam }}</p>
+      <button type="submit" class="parameters__submit">Сохранить</button>
+    </div>
+  </form>
+</section>

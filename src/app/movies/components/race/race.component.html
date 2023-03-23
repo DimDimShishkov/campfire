@@ -1,65 +1,60 @@
-<section className="section">
-    <h2 className="section__heading">Выбор расы</h2>
-    <p className="race__description">Для начала выберите любую из имеющихся рас.</p>
-    <p className="race__description">
-        Не переживайте выбрать «не то», все расы имеют свои преимущества при использовании с разными классами.
-    </p>
-    <p className="race__description race__description_additional">
-        Все описанные расы <span>среднего размера</span>, имеют скорость <span>30 футов</span> и знают только один
-        <span>язык: Общий</span>.
-    </p>
-    <p className="race__description">
-        Дополнительно вы получаете либо +2 к одному параметру и +1 к другому, либо +1 к трём параметрам
-    </p>
-    <!--  <div className="race__select">
-    {raseArr.race.map((race, index) => (
-      <RaceItem
-        race={race}
-        key={race.value}
-        setRace={props.setRace}
-        active={clicked === index}
-        onToggle={() => handleToggle(index)}
-      />
-    ))}
-  </div> -->
-</section>
+<section class="section">
+  <h2 class="section__heading">Выбор расы</h2>
+  <p class="section__description">Для начала выберите любую из имеющихся рас.</p>
+  <p class="section__description">
+    Не переживайте выбрать «не то», все расы имеют свои преимущества при использовании с разными классами.
+  </p>
+  <p class="section__description section__description_additional">
+    Все описанные расы <span>среднего размера</span>, имеют скорость <span>30 футов</span> и знают только один
+    <span>язык: Общий</span>.
+  </p>
+  <p class="section__description">
+    Дополнительно вы получаете либо +2 к одному параметру и +1 к другому, либо +1 к трём параметрам
+  </p>
 
-
-<!-- <div className="race-item">
-  <div className="race-item__heading" onClick={onToggle}>
-    <span
-      className={`race-item__span ${
-        active ? "race-item__span_active" : ""
-      } `}
-    />
-    <h3 className="race-item__title">{race.name}</h3>
-    <button className="race-item__submit-button" onClick={openItemHandler}>
-      Выбрать
-    </button>
-  </div>
-  <div
-    className="race-item__body"
-    style={
-      active
-        ? { height: contentEl.current?.scrollHeight, marginTop: "10px" }
-        : { height: "0px", marginTop: "0" }
-    }
-    ref={contentEl}
-  >
-    <p className="race-item__item">Описание</p>
-    <p className="race-item__item">{race.description}</p>
-    <p className="race-item__item">Язык</p>
-    <p className="race-item__item">{race.namesExample}</p>
-    <p className="race-item__item">Совет</p>
-    <p className="race-item__item">{race.advice}</p>
-    <p className="race-item__item">Способности</p>
-    <div className="race-item__abilities">
-      {race.abilities.map((item: IRaceAbilities) => (
-        <div className="race-item__items" key={item.name}>
-          <p className="race-item__item">{item.name}</p>
-          <p className="race-item__item">{item.description}</p>
+  <cdk-accordion class="accordion">
+    <cdk-accordion-item
+      *ngFor="let race of raceArr; let index = index"
+      #accordionItem="cdkAccordionItem"
+      class="accordion-item"
+      role="button"
+      tabindex="0"
+      [attr.id]="'accordion-header-' + index"
+      [attr.aria-expanded]="accordionItem.expanded"
+      [attr.aria-controls]="'accordion-body-' + index"
+    >
+      <div class="race-item__heading">
+        <span
+          class="race-item__span"
+          [ngClass]="{ 'race-item__span_active': accordionItem.expanded }"
+          (click)="accordionItem.toggle()"
+        ></span>
+        <h3 class="race-item__title">{{ race.name }}</h3>
+        <button #raceSelectButton class="race-item__submit-button" (click)="handleSelectRace(race.name)">
+          Выбрать
+        </button>
+      </div>
+      <div
+        class="race-item__body"
+        role="region"
+        [style.display]="accordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-' + index"
+        [attr.aria-labelledby]="'accordion-header-' + index"
+      >
+        <p class="race-item__item">Описание</p>
+        <p class="race-item__item">{{ race.description }}</p>
+        <p class="race-item__item">Язык</p>
+        <p class="race-item__item">{{ race.namesExample }}</p>
+        <p class="race-item__item">Совет</p>
+        <p class="race-item__item">{{ race.advice }}</p>
+        <p class="race-item__item">Способности</p>
+        <div class="race-item__abilities">
+          <div class="race-item__items" *ngFor="let ability of race.abilities; let i = index">
+            <p class="race-item__item">{{ ability.name }}</p>
+            <p class="race-item__item">{{ ability.description }}</p>
+          </div>
         </div>
-      ))}
-    </div>
-  </div>
-</div> -->
+      </div>
+    </cdk-accordion-item>
+  </cdk-accordion>
+</section>

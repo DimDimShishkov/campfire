@@ -1,20 +1,46 @@
 <div class="catalog">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
-    <app-header></app-header>
-    <section class="create">
-        <div class="create__header">
-            <h1>Создание персонажа</h1>
-            <p>
-                игра про мир, который себя не помнит, и теней, которые обрели форму, но не знают, кто они. Они помнят
-                лишь базовые вещи, ничего конкретного про себя и своё прошлое. Ими движет желание узнать, что таится в
-                темноте и что ещё сохранилось.
-            </p>
-        </div>
-    </section>
+  <div id="stars"></div>
+  <div id="stars2"></div>
+  <div id="stars3"></div>
+  <app-header></app-header>
 
-    <!--  <div class="catalog__form">
+  <section class="info">
+    <div class="info__heading">
+      <h1 class="info__title">Костёр</h1>
+      <p class="info__subtitle">
+        игра про мир, который себя не помнит и теней, которые обрели форму. Тени помнят лишь базовые вещи, ничего
+        конкретного про себя и своё прошлое, но ими движет желание узнать, что таится в темноте и что ещё сохранилось.
+      </p>
+    </div>
+    <p class="info__subheading">
+      <span class="info__maintext">Вы — обрётшие тело тени. </span>
+      Вы не беспокоитесь о смерти, так как вам, кажется, нечего терять, но ваше любопытство и желание действовать так
+      сильны, что смерти вы будете избегать.
+      <span class="info__text">
+        Эта игра рассчитана на выживание, исследование и бои с вызовом для игроков. Цель большинства сессий — добыть
+        что-то извне и вернуться. Это могут быть знания, ресурсы или даже новые друзья.
+      </span>
+      Для записи на игру заходите:
+      <a href="https://t.me/erevankoster" target="_blank" rel="noreferrer" class="info__link"> t.me/erevankoster </a>
+      . И помните:
+      <span class="info__important"> персонажи могут окончательно умереть. Даже очень любимые. </span>
+      <span class="info__more"> Даже те, которые нравятся мастеру.</span>
+    </p>
+    <div class="info__description">
+      <p class="info__subheading">
+        <span class="info__maintext">Создание персонажа:</span> прежде, чем начать играть в Костёр, вам нужен персонаж.
+        Создаётся он первого уровня, а развивается — участвуя в игровых сессиях. Расы в мире Костра свои, и хотя они
+        мало помнят о своём мире, они различают друг друга и понимают свои различия. После выбора расы на любом этапе
+        создания персонажа подберите ему имя, примеры имён указаны в описании рас
+      </p>
+    </div>
+  </section>
+
+  <app-race (setRace)="setRaceEvent($event)"></app-race>
+  <app-parameters (setParameters)="setParametersEvent($event)"></app-parameters>
+  <app-classes (setClass)="setClassEvent($event)"></app-classes>
+
+  <!--  <div class="catalog__form">
         <mat-form-field appearance="outline">
             <mat-select name="genre" matNativeControl (selectionChange)="selectGenre($event.value)" placeholder="Выберите жанр">
                 <mat-option *ngFor="let genre of genreArr" [value]="genre.id">{{ genre.name }}</mat-option>
@@ -32,7 +58,7 @@
         </mat-form-field>
     </div> -->
 
-    <!-- <div class="catalog__list">
+  <!-- <div class="catalog__list">
         <ng-container *ngIf="cardsArr.length; else templateA">
             <app-card
                 *ngFor="let card of cardsArr; let i = index"
@@ -48,7 +74,7 @@
         </ng-template>
     </div> -->
 
-    <!-- <h2 class="catalog__heading">Самый лучший фильм</h2>
+  <!-- <h2 class="catalog__heading">Самый лучший фильм</h2>
     <div class="catalog__list">
         <ng-container *ngIf="favoriteCard; else templateB">
             <app-card
@@ -64,6 +90,6 @@
         </ng-template>
     </div> -->
 
-    <app-staff></app-staff>
-    <app-footer></app-footer>
+  <app-staff></app-staff>
+  <app-footer></app-footer>
 </div>
