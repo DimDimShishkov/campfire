@@ -3,12 +3,6 @@
 .section {
   @include section();
 }
-.section__heading {
-  @include section__heading();
-}
-.section__description {
-  @include section__description();
-}
 
 .parameters__form {
   margin: 10px 0 0;

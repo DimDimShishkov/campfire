@@ -17,6 +17,7 @@ export interface IData {
   likeToggleEvent: (card: ICard) => void;
 }
 
+// от сюда
 export interface IRace {
   name: string;
   value: string;
@@ -25,7 +26,6 @@ export interface IRace {
   advice: string;
   abilities: IRaceAbilities[];
 }
-
 export interface IRaceAbilities {
   name: string;
   description: string;
@@ -39,26 +39,15 @@ export interface IParameters {
   value: number;
 }
 
-export interface IAbility {
-  name: string;
-  checked: boolean;
-  value: string;
-}
-
-export interface IParameter {
-  name: string;
-  value: number;
-  error?: string;
-  bonus: string;
-}
-
 export interface IClass {
   name: string;
   value: string;
   description: string;
   advice: string;
   hitDice: string;
+  hitDiceValue: string;
   hitPerLvl: string;
+  hitPerLvlValue: string;
   armors: string;
   weapons: string;
   skills: string;
@@ -85,4 +74,10 @@ export interface IAbilities {
   name: string;
   availableFrom: string;
   description: string;
+}
+
+export interface IAbility {
+  name: string;
+  checked: boolean;
+  value: string;
 }

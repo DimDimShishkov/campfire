@@ -6,7 +6,8 @@ import Genres from '../../../../mockData/genres.json';
 import { ModalComponent } from '../../components/modal/modal.component';
 
 /**
- * @title Итоговый компонент с Фильтром и Инпутом (Этап 3)
+ *
+ * Итоговый компонент с Фильтром и Инпутом (Этап 3)
  */
 
 @Component({
@@ -86,7 +87,6 @@ export class CatalogComponent implements DoCheck {
     this.selectedParams = parameters;
   }
   setClassEvent(className: string) {
-    console.log(className);
     this.selectedClass = className;
   }
 }

@@ -1,29 +1,323 @@
-<section className="abilities">
-    <h2 className="abilities__heading">Распределение навыков</h2>
+<section class="section">
+  <h2 class="section__heading">Распределение навыков</h2>
 
-    <ng-container
-        *ngIf="parameters.length && race !== 'Подлежит выбору' && character !== 'Подлежит выбору'; else templateA"
-    >
-        <div></div>
-    </ng-container>
+  <ng-container *ngIf="isAbilitiesComplete; else templateA">
+    <p class="section__description">Вы выбрали расу, класс и расставили основные параметры.</p>
+    <p class="section__description">Остаётся выбрать навыки и спасброски.</p>
+    <p class="section__description_additional">
+      Выбранная раса: <span>{{ selectedRace }}</span>
+    </p>
+    <p class="section__description_additional">
+      Выбранный класс: <span>{{ selectedClass }}</span>
+    </p>
 
-    <ng-template #templateA>
-        <ng-container
-            *ngIf="!parameters.length && race !== 'Подлежит выбору' && character !== 'Подлежит выбору'; else templateB"
-        >
-            <p class="abilities__description">Раса и класс выбраны. Остаётся распределить параметры.</p>
-        </ng-container>
-    </ng-template>
+    <div class="abilities__containers">
+      <!-- Сила -->
+      <div class="abilities__container">
+        <h2 class="abilities__title">
+          Сила
+          <span class="abilities__line"></span>
+          <span class="abilities__title-number">{{ abilitiesArr | value : 'str' }}</span>
+        </h2>
+        <div class="abilities__items">
+          <div class="abilities__item">
+            <div class="abilities__text-item">
+              <p class="abilities__subtitle">проверка</p>
+            </div>
+            <div class="abilities__number-item">
+              <span class="abilities__title-number">{{ abilitiesArr | value : 'str-check' }}</span>
+            </div>
+          </div>
+          <app-ability-item
+            [itemName]="'str-saves'"
+            [skill]="abilitiesArr | ability : 'str-saves'"
+            (handleOnChange)="handleChangeSpecial($event)"
+            class="abilities__item"
+          ></app-ability-item>
+        </div>
+        <app-ability-item
+          [itemName]="'str-athletics'"
+          [skill]="abilitiesArr | ability : 'str-athletics'"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Атлетика'"
+        ></app-ability-item>
+      </div>
 
-    <ng-template #templateB>
-        <ng-container
-            *ngIf="parameters.length && (race === 'Подлежит выбору' || character === 'Подлежит выбору'); else templateC"
-        >
-            <p class="abilities__description">Параметры распределены. Остаётся выбрать расу и класс.</p>
-        </ng-container>
-    </ng-template>
+      <!-- Телосложение -->
+      <div class="abilities__container">
+        <h2 class="abilities__title">
+          Телосложение
+          <span class="abilities__line"></span>
+          <span class="abilities__title-number"> {{ abilitiesArr | value : 'con' }}</span>
+        </h2>
+        <div class="abilities__items">
+          <div class="abilities__item">
+            <div class="abilities__text-item">
+              <p class="abilities__subtitle">проверка</p>
+            </div>
+            <div class="abilities__number-item">
+              <p class="abilities__subnumber">{{ abilitiesArr | value : 'con-check' }}</p>
+            </div>
+          </div>
+          <app-ability-item
+            [itemName]="'con-saves'"
+            [skill]="abilitiesArr | ability : 'con-saves'"
+            (handleOnChange)="handleChangeSpecial($event)"
+            class="abilities__item"
+          ></app-ability-item>
+        </div>
+      </div>
 
-    <ng-template #templateC>
-        <p class="abilities__description">Сперва требуется распределить параметры, выбрать расу и класс.</p>
-    </ng-template>
+      <!--  Интеллект  -->
+      <div class="abilities__container">
+        <h2 class="abilities__title">
+          Интеллект
+          <span class="abilities__line"></span>
+          <span class="abilities__title-number">{{ abilitiesArr | value : 'int' }} </span>
+        </h2>
+        <div class="abilities__items">
+          <div class="abilities__item">
+            <div class="abilities__text-item">
+              <p class="abilities__subtitle">проверка</p>
+            </div>
+            <div class="abilities__number-item">
+              <p class="abilities__subnumber">{{ abilitiesArr | value : 'int-check' }}</p>
+            </div>
+          </div>
+          <app-ability-item
+            [itemName]="'int-saves'"
+            [skill]="abilitiesArr | ability : 'int-saves'"
+            (handleOnChange)="handleChangeSpecial($event)"
+            class="abilities__item"
+          ></app-ability-item>
+        </div>
+        <app-ability-item
+          [itemName]="'int-investigation'"
+          [skill]="abilitiesArr | ability : 'int-investigation'"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Анализ'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'int-history'"
+          [skill]="abilitiesArr | ability : 'int-history'"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'История'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'int-arcana'"
+          [skill]="abilitiesArr | ability : 'int-arcana'"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Магия'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'int-nature'"
+          [skill]="abilitiesArr | ability : 'int-nature'"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Природа'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'int-religion'"
+          [skill]="abilitiesArr | ability : 'int-religion'"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Религия'"
+        ></app-ability-item>
+      </div>
+
+      <!--  Харизма -->
+      <div class="abilities__container">
+        <h2 class="abilities__title">
+          Харизма
+          <span class="abilities__line"></span>
+          <span class="abilities__title-number">{{ abilitiesArr | value : 'cha' }}</span>
+        </h2>
+        <div class="abilities__items">
+          <div class="abilities__item">
+            <div class="abilities__text-item">
+              <p class="abilities__subtitle">проверка</p>
+            </div>
+            <div class="abilities__number-item">
+              <p class="abilities__subnumber">{{ abilitiesArr | value : 'cha-check' }}</p>
+            </div>
+          </div>
+          <app-ability-item
+            [itemName]="'cha-saves'"
+            [skill]="abilitiesArr | ability : 'cha-saves'"
+            (handleOnChange)="handleChangeSpecial($event)"
+            class="abilities__item"
+          ></app-ability-item>
+        </div>
+        <app-ability-item
+          [itemName]="'cha-performance'"
+          [skill]="abilitiesArr | ability : 'cha-performance'"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Выступление'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'cha-intimidation'"
+          [skill]="abilityHandler('cha-intimidation')"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Запугивание'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'cha-deception'"
+          [skill]="abilityHandler('cha-deception')"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Обман'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'cha-persuasion'"
+          [skill]="abilityHandler('cha-persuasion')"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Убеждение'"
+        ></app-ability-item>
+      </div>
+
+      <!--  Мудрость  -->
+      <div class="abilities__container">
+        <h2 class="abilities__title">
+          Мудрость
+          <span class="abilities__line"></span>
+          <span class="abilities__title-number">{{ abilitiesArr | value : 'wis' }}</span>
+        </h2>
+        <div class="abilities__items">
+          <div class="abilities__item">
+            <div class="abilities__text-item">
+              <p class="abilities__subtitle">проверка</p>
+            </div>
+            <div class="abilities__number-item">
+              <p class="abilities__subnumber">{{ abilitiesArr | value : 'wis-check' }}</p>
+            </div>
+          </div>
+          <app-ability-item
+            [itemName]="'wis-saves'"
+            [skill]="abilityHandler('wis-saves')"
+            (handleOnChange)="handleChangeSpecial($event)"
+            class="abilities__item"
+          ></app-ability-item>
+        </div>
+        <app-ability-item
+          [itemName]="'wis-perception'"
+          [skill]="abilityHandler('wis-perception')"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Восприятие'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'wis-survival'"
+          [skill]="abilityHandler('wis-survival')"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Выживание'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'wis-medicine'"
+          [skill]="abilityHandler('wis-medicine')"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Медицина'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'wis-insight'"
+          [skill]="abilityHandler('wis-insight')"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Проницательность'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'wis-animal'"
+          [skill]="abilityHandler('wis-animal')"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Уход за животными'"
+        ></app-ability-item>
+      </div>
+
+      <!--  Ловкость  -->
+      <div class="abilities__container">
+        <h2 class="abilities__title">
+          Ловкость
+          <span class="abilities__line"></span>
+          <span class="abilities__title-number">{{ abilitiesArr | value : 'dex' }}</span>
+        </h2>
+        <div class="abilities__items">
+          <div class="abilities__item">
+            <div class="abilities__text-item">
+              <p class="abilities__subtitle">проверка</p>
+            </div>
+            <div class="abilities__number-item">
+              <p class="abilities__subnumber">{{ abilitiesArr | value : 'dex-check' }}</p>
+            </div>
+          </div>
+          <app-ability-item
+            [itemName]="'dex-saves'"
+            [skill]="abilityHandler('dex-saves')"
+            (handleOnChange)="handleChangeSpecial($event)"
+            class="abilities__item"
+          ></app-ability-item>
+        </div>
+        <app-ability-item
+          [itemName]="'dex-acrobatics'"
+          [skill]="abilityHandler('dex-acrobatics')"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Акробатика'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'dex-sleight'"
+          [skill]="abilityHandler('dex-sleight')"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Ловкость рук'"
+        ></app-ability-item>
+        <app-ability-item
+          [itemName]="'dex-stealth'"
+          [skill]="abilityHandler('dex-stealth')"
+          (handleOnChange)="handleChangeSpecial($event)"
+          [itemText]="'Скрытность'"
+        ></app-ability-item>
+      </div>
+
+      <div class="abilities__additional">
+        <div class="abilities__stats">
+          <div class="abilities__vit">
+            <svg class="abilities-block__shield" width="48" height="60" viewBox="0 0 48 60" fill="none">
+              <path
+                d="M23.8494 0.802124L1.86096 12.5092V36.2236L9.39125 50.3321L23.8494 59.0374L38.0063 50.3321L46.139 36.2236V12.5092L23.8494 0.802124Z"
+                fill="rgb(103, 0, 1)"
+              ></path>
+              <path
+                d="M46.8264 12.1484L24.2164 0.13221C23.881 -0.0463404 23.479 -0.0438346 23.1461 0.138475L1.16172 12.1546C0.801164 12.352 0.577545 12.7291 0.577545 13.1395V28.8356C0.590736 41.7383 8.25532 53.4111 20.1084 58.5803L23.1599 59.9066C23.445 60.0306 23.7698 60.0312 24.0556 59.9078L27.494 58.4268C39.5669 53.3697 47.4212 41.5841 47.4225 28.5243V13.1395C47.4225 12.7247 47.1932 12.3432 46.8264 12.1484ZM45.921 28.5C45.9185 40.6596 38.2441 52.2944 27.0029 57L23.6109 58.2L20.6968 57C9.66353 52.1885 2.09155 41.3562 2.07899 29.3457V13.2L23.6997 1.5L45.921 13.2V28.5Z"
+                fill="#ff6701"
+              ></path>
+            </svg>
+            <p class="abilities__text abilities__text_pc">14</p>
+            <p class="abilities__text abilities__text_desc">КЗ</p>
+          </div>
+
+          <div class="abilities__stat">
+            <p class="abilities__text">{{ abilitiesArr | value : 'dex-check' }}</p>
+            <p class="abilities__text">Инициатива</p>
+          </div>
+
+          <div class="abilities__stat">
+            <p class="abilities__text">30</p>
+            <p class="abilities__text">Скорость</p>
+          </div>
+        </div>
+
+        <div class="abilities__stats">
+          <div class="abilities__stats">
+            <div class="abilities__stat">
+              <p class="abilities__text">{{ +chosenClass.hitPerLvlValue + +(abilitiesArr | value : 'dex-check') }}</p>
+              <p class="abilities__text">Хиты на 1 ур.</p>
+            </div>
+
+            <div class="abilities__stat">
+              <p class="abilities__text">{{ chosenClass.hitDiceValue }}</p>
+              <p class="abilities__text">Кость хитов</p>
+            </div>
+          </div>
+        </div>
+        <button class="abilities__stat abilities__button">Сохранить результат</button>
+      </div>
+    </div>
+    <p class="abilities__description">Как будете готовы - сохраните результат.</p>
+  </ng-container>
+
+  <ng-template #templateA>
+    <p class="abilities__description">Сперва требуется распределить параметры, выбрать расу и класс.</p>
+  </ng-template>
 </section>

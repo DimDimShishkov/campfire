@@ -9,7 +9,7 @@
   </p>
   <p class="section__description">Главное требование, чтобы сумма всех очков не превышала 75 очков.</p>
   <p class="section__description">Рекомендуется значение параметра не меньше 8 и не больше 15.</p>
-  <form class="parameters__form" (ngSubmit)="handleSubmitForm()">
+  <form class="parameters__form">
     <div class="parameters__items">
       <div class="parameters__item" *ngFor="let parameter of parametersArr; let index = index">
         <div class="parameters__status">
@@ -31,7 +31,7 @@
     </div>
     <div class="parameters__items">
       <p>Осталось очков: {{ 75 - summaryParam }}</p>
-      <button type="submit" class="parameters__submit">Сохранить</button>
+      <button type="submit" class="parameters__submit" (click)="handleSubmitForm()">Сохранить</button>
     </div>
   </form>
 </section>

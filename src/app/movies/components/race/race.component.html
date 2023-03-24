@@ -23,35 +23,33 @@
       [attr.aria-expanded]="accordionItem.expanded"
       [attr.aria-controls]="'accordion-body-' + index"
     >
-      <div class="race-item__heading">
+      <div class="accordion-item__heading">
         <span
-          class="race-item__span"
-          [ngClass]="{ 'race-item__span_active': accordionItem.expanded }"
+          class="accordion-item__span"
+          [ngClass]="{ 'accordion-item__span_active': accordionItem.expanded }"
           (click)="accordionItem.toggle()"
         ></span>
-        <h3 class="race-item__title">{{ race.name }}</h3>
-        <button #raceSelectButton class="race-item__submit-button" (click)="handleSelectRace(race.name)">
-          Выбрать
-        </button>
+        <h3 class="accordion-item__title">{{ race.name }}</h3>
+        <button class="accordion-item__submit-button" (click)="handleSelectRace(race.name)">Выбрать</button>
       </div>
       <div
-        class="race-item__body"
+        class="accordion-item__body"
         role="region"
         [style.display]="accordionItem.expanded ? '' : 'none'"
         [attr.id]="'accordion-body-' + index"
         [attr.aria-labelledby]="'accordion-header-' + index"
       >
-        <p class="race-item__item">Описание</p>
-        <p class="race-item__item">{{ race.description }}</p>
-        <p class="race-item__item">Язык</p>
-        <p class="race-item__item">{{ race.namesExample }}</p>
-        <p class="race-item__item">Совет</p>
-        <p class="race-item__item">{{ race.advice }}</p>
-        <p class="race-item__item">Способности</p>
-        <div class="race-item__abilities">
-          <div class="race-item__items" *ngFor="let ability of race.abilities; let i = index">
-            <p class="race-item__item">{{ ability.name }}</p>
-            <p class="race-item__item">{{ ability.description }}</p>
+        <p class="accordion-item__text">Описание</p>
+        <p class="accordion-item__text">{{ race.description }}</p>
+        <p class="accordion-item__text">Язык</p>
+        <p class="accordion-item__text">{{ race.namesExample }}</p>
+        <p class="accordion-item__text">Совет</p>
+        <p class="accordion-item__text">{{ race.advice }}</p>
+        <p class="accordion-item__text">Способности</p>
+        <div>
+          <div class="accordion-item__items" *ngFor="let ability of race.abilities; let i = index">
+            <p class="accordion-item__text">{{ ability.name }}</p>
+            <p class="accordion-item__text">{{ ability.description }}</p>
           </div>
         </div>
       </div>

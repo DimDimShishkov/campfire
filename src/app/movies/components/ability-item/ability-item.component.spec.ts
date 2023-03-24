@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AbilitiesWrapComponent } from './abilities-wrap.component';
+import { AbilityItemComponent } from './ability-item.component';
 
-describe('AbilitiesWrapComponent', () => {
-  let component: AbilitiesWrapComponent;
-  let fixture: ComponentFixture<AbilitiesWrapComponent>;
+describe('AbilityItemComponent', () => {
+  let component: AbilityItemComponent;
+  let fixture: ComponentFixture<AbilityItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AbilitiesWrapComponent ]
+      declarations: [ AbilityItemComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AbilitiesWrapComponent);
+    fixture = TestBed.createComponent(AbilityItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

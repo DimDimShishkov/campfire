@@ -10,36 +10,118 @@ $main-red: #f44366;
   padding: 80px 0 0;
   margin: 0 auto;
   color: beige;
+
+  &__heading {
+    margin: 0 0 20px;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 34px;
+    text-align: left;
+    color: #ff3c00;
+  }
+  &__description {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    text-align: left;
+    margin: 0;
+
+    &_additional {
+      margin: 10px 0;
+      & span {
+        color: yellow;
+      }
+    }
+  }
 }
-@mixin section__heading {
-  margin: 0 0 20px;
-  font-weight: 600;
-  font-size: 25px;
-  line-height: 34px;
-  text-align: left;
-  color: #ff3c00;
-}
-@mixin section__description {
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 27px;
-  text-align: left;
-  margin: 0;
-}
-@mixin section__description_additional {
-  margin: 10px 0;
-}
+
 @mixin accordion {
   margin: 20px 0 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-@mixin accordion-item {
-  border: 1px solid rgb(245, 222, 179);
-  border-radius: 5px;
-  padding: 10px;
-  box-sizing: border-box;
-  transition: all 0.3s ease;
+
+  &-item {
+    border: 1px solid rgb(245, 222, 179);
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    &__heading {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 10px;
+      height: 100%;
+
+      &:hover .accordion-item__title {
+        color: rgb(245, 222, 179);
+      }
+    }
+    &__span {
+      background: url(/assets/accordion.png);
+      transition: all 0.3s ease;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      &_active {
+        transform: rotate(180deg);
+      }
+    }
+    &__title {
+      margin: 0;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 27px;
+      transition: all 0.3s ease;
+    }
+    &__submit-button {
+      margin-left: auto;
+      box-sizing: border-box;
+      width: 252px;
+      height: 54px;
+      border: 2px solid #ff6701;
+      border-radius: 10px;
+      background: rgb(103, 0, 1);
+      color: rgb(255, 255, 255);
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 27px;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+
+      &:hover {
+        background: rgba(103, 0, 1, 0.8);
+      }
+    }
+    &__body {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      padding-top: 10px;
+    }
+    &__text {
+      border: 1px solid white;
+      padding: 5px;
+      font-weight: 400;
+      /* font-size: 18px; */
+      /* line-height: 22px; */
+      margin: 0;
+      text-align: left;
+
+      &:nth-child(odd) {
+        font-weight: 600;
+      }
+    }
+    &__items {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+    }
+  }
 }

@@ -1,0 +1,68 @@
+@import 'variables';
+
+.abilities__item {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3px;
+  position: relative;
+  flex: 1 1;
+  margin-bottom: 0;
+}
+.abilities__text-item {
+  border: 1px solid #ff6701;
+  border-right: none;
+  border-radius: 25px 0 0 25px;
+  padding: 5px 0 5px 30px;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+}
+.abilities__subtitle {
+  font-size: 14px;
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  padding: 0;
+  text-align: left;
+  text-transform: uppercase;
+  width: 100%;
+}
+.abilities__number-item {
+  background: rgb(103, 0, 1);
+  border: 1px solid #ff6701;
+  border-radius: 5px;
+  min-width: 46px;
+  padding: 4px 0 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.abilities__subnumber {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 27px;
+  margin: 0;
+  position: relative;
+  transition: all 0.3s ease;
+}
+.abilities__label {
+  position: absolute;
+  background: none;
+  border: 1px solid #ff6701;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  left: 7px;
+  top: 7px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.abilities__label_active {
+  background: rgb(103, 0, 1);
+}
+.abilities__input {
+  display: none;
+}

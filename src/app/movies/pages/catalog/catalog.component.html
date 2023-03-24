@@ -39,6 +39,11 @@
   <app-race (setRace)="setRaceEvent($event)"></app-race>
   <app-parameters (setParameters)="setParametersEvent($event)"></app-parameters>
   <app-classes (setClass)="setClassEvent($event)"></app-classes>
+  <app-abilities
+    [selectedRace]="selectedRace"
+    [selectedClass]="selectedClass"
+    [selectedParams]="selectedParams"
+  ></app-abilities>
 
   <!--  <div class="catalog__form">
         <mat-form-field appearance="outline">

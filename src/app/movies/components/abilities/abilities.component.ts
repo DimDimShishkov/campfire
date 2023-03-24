@@ -1,23 +1,82 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import AbilitiesJson from '@mockData/abilities.json';
-import { IAbility, IParameter } from 'src/interface/page';
+import { Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import abilitiesJson from '@mockData/abilities.json';
+import classJson from '@mockData/classes.json';
+import { IAbility, IClass, IParameters } from 'src/interface/page';
+
+/**
+ *
+ * этап выбора навыков
+ */
 
 @Component({
   selector: 'app-abilities',
   templateUrl: './abilities.component.html',
   styleUrls: ['./abilities.component.scss'],
 })
-export class AbilitiesComponent implements OnInit {
+export class AbilitiesComponent implements OnChanges {
   // handleOnChange(event: React.FormEvent<HTMLInputElement>): void;
-  @Input() race: string;
-  @Input() character: string;
-  @Input() parameters: IParameter[];
+  @Input() selectedRace: string;
+  @Input() selectedClass: string;
+  @Input() selectedParams: IParameters[];
   @Output() setResult = new EventEmitter<IAbility[]>();
+
+  public isAbilitiesComplete: boolean = false;
+  public abilitiesArr: IAbility[] = abilitiesJson;
+  public resultArr: IAbility[] = [];
+  public chosenClass: IClass;
+  private findParam: IParameters | undefined;
+  private resultParam: number | string;
 
   constructor() {}
 
-  ngOnInit(): void {
-    // throw new Error('Method not implemented.');
-    console.log(AbilitiesJson);
+  // Расчёт параметров для чарника
+  ngOnChanges() {
+    this.isAbilitiesComplete =
+      !!this.selectedParams?.length &&
+      this.selectedRace !== 'Подлежит выбору' &&
+      this.selectedClass !== 'Подлежит выбору';
+    if (this.isAbilitiesComplete) {
+      this.abilitiesArr = this.abilitiesArr.map((skill) => {
+        this.findParam = this.selectedParams.find((item) => skill.name.split('-')[0] === item.nameEN);
+        return this.findParam?.nameEN === skill.name
+          ? {
+              name: skill.name,
+              checked: false,
+              value: `${this.findParam?.value}`,
+            }
+          : {
+              name: skill.name,
+              checked: false,
+              value: `${this.findParam?.bonus}`,
+            };
+      });
+      this.chosenClass = classJson.find((item) => item.name === this.selectedClass)!;
+      console.log(this.chosenClass);
+    }
+  }
+
+  valueHandler(v: string, mode: number) {
+    return this.abilitiesArr.find((item) => item.name === v)?.value;
+  }
+
+  abilityHandler(v: string) {
+    return this.abilitiesArr.find((item) => item.name === v);
+  }
+
+  handleChangeSpecial(obj: { id: string; checked: boolean }) {
+    const { id, checked } = obj;
+    this.abilitiesArr = this.abilitiesArr.map((el) => {
+      if (el.name === id) {
+        this.resultParam = checked ? +el.value + 2 : +el.value - 2;
+        this.resultParam = this.resultParam > 0 ? `+${this.resultParam}` : `${this.resultParam}`;
+        return { ...el, checked: checked, value: this.resultParam };
+      } else {
+        return { ...el };
+      }
+    });
+  }
+
+  handleSubmitForm() {
+    this.setResult.emit(this.abilitiesArr);
   }
 }
