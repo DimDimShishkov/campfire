@@ -18,28 +18,14 @@ export class ModalComponent implements OnChanges {
   @Input() selectedAbilities: IAbility[];
   public chosenClass: IClass;
 
-  // public card: ICard;
-  // public genreArr: string = '';
-  // public isLiked: boolean = false;
-
   constructor(@Inject(MAT_DIALOG_DATA) public data: IData) {}
 
   ngOnChanges(changes: SimpleChanges): void {}
 
   ngOnInit() {
-    // this.genreArr = Genres.filter((n) => this.data.card.genre.indexOf(n.id) !== -1)
-    //     .map((item) => item.name)
-    //     .join(', ');
-    // this.isLiked = this.data.isLiked;
-    // this.card = this.data.card;
     this.selectedRace = this.data.selectedRace;
     this.selectedClass = this.data.selectedClass;
     this.selectedAbilities = this.data.selectedAbilities;
     this.chosenClass = classJson.find((item) => item.name === this.selectedClass)!;
   }
-
-  // like() {
-  //     this.data.likeToggleEvent(this.data.card);
-  //     this.isLiked = !this.isLiked;
-  // }
 }

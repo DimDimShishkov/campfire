@@ -1,7 +1,7 @@
 <div class="catalog">
-  <div id="stars"></div>
-  <div id="stars2"></div>
-  <div id="stars3"></div>
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
   <app-header (openCharList)="openCharListModal()"></app-header>
 
   <section class="info">
@@ -45,56 +45,6 @@
     [selectedParams]="selectedParams"
     (setResult)="setAbilitiesEvent($event)"
   ></app-abilities>
-
-  <!--  <div class="catalog__form">
-        <mat-form-field appearance="outline">
-            <mat-select name="genre" matNativeControl (selectionChange)="selectGenre($event.value)" placeholder="Выберите жанр">
-                <mat-option *ngFor="let genre of genreArr" [value]="genre.id">{{ genre.name }}</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="outline">
-            <input
-                matInput
-                type="text"
-                placeholder="Введите название"
-                [(ngModel)]="selectedName"
-                (input)="selectName(selectedName)"
-            />
-        </mat-form-field>
-    </div> -->
-
-  <!-- <div class="catalog__list">
-        <ng-container *ngIf="cardsArr.length; else templateA">
-            <app-card
-                *ngFor="let card of cardsArr; let i = index"
-                [card]="cardsArr[i]"
-                [isLiked]="card.id === favoriteCardID"
-                (likeToggleEvent)="likeToggleHandler($event)"
-                (openCardEvent)="openCardHandler($event)"
-            ></app-card>
-        </ng-container>
-
-        <ng-template #templateA>
-            <p class="catalog__subheading">Ничего не найдено</p>
-        </ng-template>
-    </div> -->
-
-  <!-- <h2 class="catalog__heading">Самый лучший фильм</h2>
-    <div class="catalog__list">
-        <ng-container *ngIf="favoriteCard; else templateB">
-            <app-card
-                [card]="favoriteCard"
-                [isLiked]="true"
-                (likeToggleEvent)="likeToggleHandler($event)"
-                (openCardEvent)="openCardHandler($event)"
-            ></app-card>
-        </ng-container>
-
-        <ng-template #templateB>
-            <p class="catalog__subheading">Лучший фильм еще не выбран</p>
-        </ng-template>
-    </div> -->
 
   <app-staff></app-staff>
   <app-footer></app-footer>

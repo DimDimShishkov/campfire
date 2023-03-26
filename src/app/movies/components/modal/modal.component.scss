@@ -20,46 +20,12 @@
 
   // @media screen and (max-width: 600px) {
   // }
-
-  // @media screen and (max-width: 600px) {
-  &__buttons {
-    position: absolute;
-    z-index: 5;
-    top: -20px;
-    right: -120px;
-    border: none;
-    // background: url(/assets/CloseIconDesktop.svg);
-    background: url(/assets/like.svg);
-    transition: all 0.3s ease;
-    background-size: 100%;
-    cursor: pointer;
-    width: 32px;
-    height: 32px;
-    padding: 0;
-
-    &:hover {
-      opacity: 0.6;
-    }
-  }
-  // }
-}
-
-.result-list {
-  position: absolute;
-  top: 60px;
-  left: 0;
-  right: 0;
-  background-color: #ffffff;
-  width: 100%;
-  color: #000;
 }
 .result-list__container {
   display: flex;
   flex-direction: column;
   gap: 20px;
   margin: 0 auto;
-  // max-width: 700px;
-  // width: 100%;
   min-height: 100vh;
   padding: 20px 0;
   position: relative;
@@ -71,8 +37,6 @@
   width: 100%;
   justify-content: space-between;
   gap: 10px;
-  /* height: 70.5pt; */
-  /* margin-bottom: 20pt; */
 }
 
 .result-list__name {
@@ -131,7 +95,6 @@
 }
 .result-list__info-text {
   margin: 0;
-  /* font-size: 15px; */
   font-size: 9.3pt;
   line-height: 18px;
   font-weight: 500;
@@ -146,7 +109,6 @@
   flex-direction: column;
   justify-content: flex-start;
   gap: 10px;
-  /* height: 668pt; */
   position: relative;
   width: 33%;
 }
@@ -246,7 +208,6 @@
   margin-bottom: 2px;
 }
 .save-block__marker {
-  background: #fff;
   border: 1pt solid #4c453f;
   border-radius: 50%;
   display: block;
@@ -425,7 +386,7 @@ svg:not(:root) {
   width: 100%;
 }
 .vitality-block__death-circle {
-  background: #fff;
+  // background: #fff;
   border: 2px solid #000;
   border-radius: 50%;
   height: 12px;
