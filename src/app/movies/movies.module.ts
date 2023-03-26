@@ -10,6 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 
 import { AbilitiesComponent } from './components/abilities/abilities.component';
+import { AbilityItemComponent } from './components/ability-item/ability-item.component';
 import { CardComponent } from './components/card/card.component';
 import { ClassesComponent } from './components/classes/classes.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -18,11 +19,11 @@ import { ModalComponent } from './components/modal/modal.component';
 import { ParametersComponent } from './components/parameters/parameters.component';
 import { AbilityPipe } from './components/pipes/ability.pipe';
 import { BonusPipe } from './components/pipes/bonus.pipe';
+import { CheckedPipe } from './components/pipes/checked.pipe';
 import { ValuePipe } from './components/pipes/value.pipe';
 import { RaceComponent } from './components/race/race.component';
 import { StaffComponent } from './components/staff/staff.component';
 import { CatalogComponent } from './pages/catalog/catalog.component';
-import { AbilityItemComponent } from './components/ability-item/ability-item.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { AbilityItemComponent } from './components/ability-item/ability-item.com
     ParametersComponent,
     BonusPipe,
     ValuePipe,
+    CheckedPipe,
     AbilityPipe,
     ClassesComponent,
     AbilityItemComponent,

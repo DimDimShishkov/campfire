@@ -4,7 +4,6 @@ import { IParameters } from 'src/interface/page';
 import { BonusPipe } from '../pipes/bonus.pipe';
 
 /**
- *
  * этап выбора SPECIAL
  */
 

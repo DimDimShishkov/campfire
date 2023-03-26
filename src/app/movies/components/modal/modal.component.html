@@ -1,4 +1,4 @@
-<div mat-dialog-content class="modal">
+<!-- <div mat-dialog-content class="modal">
     <img src="mockData/films/{{ card.id }}.jpeg" [alt]="card.name" class="modal__image" />
     <div class="modal__container">
         <h2 class="modal__heading">{{ card.name }}</h2>
@@ -10,7 +10,507 @@
             <button mat-button [color]="isLiked ? 'accent' : 'primary'" (click)="like()">
                 {{ isLiked ? 'Удалить из лучших фильмов' : 'Выбрать лучшим фильмом' }}
             </button>
-            <button mat-button color="accent" mat-dialog-close>Закрыть</button>
         </div>
     </div>
+</div> -->
+
+<div mat-dialog-content class="modal">
+  <div class="result-list__container">
+    <div class="result-list__header">
+      <div class="result-list__name">
+        <input name="name" type="text" class="result-list__name-input" placeholder="Введите имя персонажа" />
+        <span class="result-list__line"></span>
+        <span class="result-list__label">имя персонажа</span>
+      </div>
+
+      <div class="result-list__info">
+        <p class="result-list__info-text">{{ selectedClass }}</p>
+        <p class="result-list__info-text"></p>
+        <p class="result-list__info-text"></p>
+        <span class="result-list__label">класс</span>
+        <span class="result-list__label">предыстория</span>
+        <span class="result-list__label">имя игрока</span>
+        <p class="result-list__info-text">{{ selectedRace }}</p>
+        <p class="result-list__info-text"></p>
+        <p class="result-list__info-text">1</p>
+        <span class="result-list__label">раса</span>
+        <span class="result-list__label">мировоззрение</span>
+        <span class="result-list__label">уровень</span>
+        <span class="result-list__info-line result-list__info-line_upper"></span>
+        <span class="result-list__info-line result-list__info-line_lower"></span>
+      </div>
+    </div>
+
+    <div class="result-list__body">
+      <ng-container *ngIf="selectedAbilities; else templateA">
+        <div class="result-list__body-column">
+          <div class="result-list__stats-skills">
+            <div class="result-list__stats">
+              <div class="stat-block">
+                <p class="stat-block__label">Сила</p>
+                <p class="stat-block__modifier">{{ selectedAbilities | value : 'str-check' }}</p>
+                <span class="stat-block__score">{{ selectedAbilities | value : 'str' }}</span>
+              </div>
+              <div class="stat-block">
+                <p class="stat-block__label">Ловкость</p>
+                <p class="stat-block__modifier">{{ selectedAbilities | value : 'dex-check' }}</p>
+                <p class="stat-block__score">{{ selectedAbilities | value : 'dex' }}</p>
+              </div>
+              <div class="stat-block">
+                <p class="stat-block__label">Телосложение</p>
+                <p class="stat-block__modifier">{{ selectedAbilities | value : 'con-check' }}</p>
+                <p class="stat-block__score">{{ selectedAbilities | value : 'con' }}</p>
+              </div>
+              <div class="stat-block">
+                <p class="stat-block__label">Интеллект</p>
+                <p class="stat-block__modifier">{{ selectedAbilities | value : 'int-check' }}</p>
+                <p class="stat-block__score">{{ selectedAbilities | value : 'int' }}</p>
+              </div>
+              <div class="stat-block">
+                <p class="stat-block__label">Мудрость</p>
+                <p class="stat-block__modifier">{{ selectedAbilities | value : 'wis-check' }}</p>
+                <p class="stat-block__score">{{ selectedAbilities | value : 'wis' }}</p>
+              </div>
+              <div class="stat-block">
+                <p class="stat-block__label">Харизма</p>
+                <p class="stat-block__modifier">{{ selectedAbilities | value : 'cha-check' }}</p>
+                <p class="stat-block__score">{{ selectedAbilities | value : 'cha' }}</p>
+              </div>
+            </div>
+
+            <div class="result-list__skills">
+              <div class="modifier-block">
+                <span class="modifier-block__modifier"></span>
+                <span class="modifier-block__label">вдохновение</span>
+              </div>
+
+              <div class="modifier-block">
+                <span class="modifier-block__modifier">+2</span>
+                <span class="modifier-block__label">Бонус владения</span>
+              </div>
+
+              <div class="saves-block">
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{ 'save-block__marker_active': (selectedAbilities | checked : 'str-saves') }"
+                  ></span>
+                  <p class="save-block__modifier">{{ selectedAbilities | value : 'str-saves' }}</p>
+                  <p class="save-block__label">Сила</p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'dex-saves')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ selectedAbilities | value : 'dex-saves' }}</p>
+                  <p class="save-block__label">Ловкость</p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'con-saves')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ selectedAbilities | value : 'con-saves' }}</p>
+                  <p class="save-block__label">Телосложение</p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'int-saves')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ selectedAbilities | value : 'int-saves' }}</p>
+                  <p class="save-block__label">Интеллект</p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'wis-saves')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ selectedAbilities | value : 'wis-saves' }}</p>
+                  <p class="save-block__label">Мудрость</p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'cha-saves')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ selectedAbilities | value : 'cha-saves' }}</p>
+                  <p class="save-block__label">Харизма</p>
+                </div>
+                <span class="saves-block__label">Спасброски</span>
+              </div>
+
+              <div class="saves-block">
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'dex-acrobatics')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'dex-acrobatics')?.value }}</p>
+                  <p class="save-block__label">
+                    Акробатика
+                    <span class="save-block__label-base">(Лов)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'int-investigation')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'int-investigation')?.value }}</p>
+                  <p class="save-block__label">
+                    Анализ
+                    <span class="save-block__label-base">(Инт)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'str-athletics')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'str-athletics')?.value }}</p>
+                  <p class="save-block__label">
+                    Атлетика
+                    <span class="save-block__label-base">(Сил)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'wis-perception')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'wis-perception')?.value }}</p>
+                  <p class="save-block__label">
+                    Восприятие
+                    <span class="save-block__label-base">(Муд)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'wis-survival')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'wis-survival')?.value }}</p>
+                  <p class="save-block__label">
+                    Выживание
+                    <span class="save-block__label-base">(Муд)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'cha-performance')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'cha-performance')?.value }}</p>
+                  <p class="save-block__label">
+                    Выступление
+                    <span class="save-block__label-base">(Хар)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'cha-intimidation')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'cha-intimidation')?.value }}</p>
+                  <p class="save-block__label">
+                    Запугивание
+                    <span class="save-block__label-base">(Хар)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'int-history')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'int-history')?.value }}</p>
+                  <p class="save-block__label">
+                    История
+                    <span class="save-block__label-base">(Инт)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'dex-sleight')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'dex-sleight')?.value }}</p>
+                  <p class="save-block__label">
+                    Ловкость рук
+                    <span class="save-block__label-base">(Лов)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'int-arcana')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'int-arcana')?.value }}</p>
+                  <p class="save-block__label">
+                    Магия
+                    <span class="save-block__label-base">(Инт)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'wis-medicine')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'wis-medicine')?.value }}</p>
+                  <p class="save-block__label">
+                    Медицина
+                    <span class="save-block__label-base">(Муд)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'cha-deception')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'cha-deception')?.value }}</p>
+                  <p class="save-block__label">
+                    Обман
+                    <span class="save-block__label-base">(Хар)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'int-nature')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'int-nature')?.value }}</p>
+                  <p class="save-block__label">
+                    Природа
+                    <span class="save-block__label-base">(Инт)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'wis-insight')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'wis-insight')?.value }}</p>
+                  <p class="save-block__label">
+                    Проницательность
+                    <span class="save-block__label-base">(Муд)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'int-religion')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'int-religion')?.value }}</p>
+                  <p class="save-block__label">
+                    Религия
+                    <span class="save-block__label-base">(Инт)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'dex-stealth')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'dex-stealth')?.value }}</p>
+                  <p class="save-block__label">
+                    Скрытность
+                    <span class="save-block__label-base">(Лов)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'cha-persuasion')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'cha-persuasion')?.value }}</p>
+                  <p class="save-block__label">
+                    Убеждение
+                    <span class="save-block__label-base">(Хар)</span>
+                  </p>
+                </div>
+                <div class="save-block">
+                  <span
+                    class="save-block__marker"
+                    [ngClass]="{
+                      'save-block__marker_active': (selectedAbilities | ability : 'wis-animal')?.checked
+                    }"
+                  ></span>
+                  <p class="save-block__modifier">{{ (selectedAbilities | ability : 'wis-animal')?.value }}</p>
+                  <p class="save-block__label">
+                    Уход за животными
+                    <span class="save-block__label-base">(Муд)</span>
+                  </p>
+                </div>
+
+                <span class="saves-block__label">навыки</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="modifier-block">
+            <span class="modifier-block__modifier">10</span>
+            <span class="modifier-block__label"> пассивная мудрость (Восприятие) </span>
+          </div>
+
+          <div class="text-block">
+            <div class="text-block__textarea"></div>
+            <p class="vitality-block__text">Прочие владения и языки</p>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-template #templateA>
+        <p class="stat-block__label">Сперва нужно распределить навыки</p>
+      </ng-template>
+
+      <div class="result-list__body-column">
+        <ng-container *ngIf="selectedAbilities; else templateA">
+          <div class="vitality-block">
+            <div class="vitality-block__box no-back">
+              <svg class="vitality-block__shield" width="48" height="60" viewBox="0 0 48 60" fill="none">
+                <path
+                  d="M23.8494 0.802124L1.86096 12.5092V36.2236L9.39125 50.3321L23.8494 59.0374L38.0063 50.3321L46.139 36.2236V12.5092L23.8494 0.802124Z"
+                  fill="white"
+                ></path>
+                <path
+                  d="M46.8264 12.1484L24.2164 0.13221C23.881 -0.0463404 23.479 -0.0438346 23.1461 0.138475L1.16172 12.1546C0.801164 12.352 0.577545 12.7291 0.577545 13.1395V28.8356C0.590736 41.7383 8.25532 53.4111 20.1084 58.5803L23.1599 59.9066C23.445 60.0306 23.7698 60.0312 24.0556 59.9078L27.494 58.4268C39.5669 53.3697 47.4212 41.5841 47.4225 28.5243V13.1395C47.4225 12.7247 47.1932 12.3432 46.8264 12.1484ZM45.921 28.5C45.9185 40.6596 38.2441 52.2944 27.0029 57L23.6109 58.2L20.6968 57C9.66353 52.1885 2.09155 41.3562 2.07899 29.3457V13.2L23.6997 1.5L45.921 13.2V28.5Z"
+                  fill="black"
+                ></path>
+              </svg>
+              <p class="vitality-block__shield-text">14</p>
+              <p class="vitality-block__shield-desc">КЗ</p>
+            </div>
+            <div class="vitality-block__box">
+              <p class="vitality-block__shield-text">{{ (selectedAbilities | ability : 'dex-check')?.value }}</p>
+              <p class="vitality-block__shield-desc">Инициатива</p>
+            </div>
+            <div class="vitality-block__box">
+              <p class="vitality-block__shield-text">30</p>
+              <p class="vitality-block__shield-desc">Скорость</p>
+            </div>
+
+            <div class="vitality-block__hp">
+              <p class="vitality-block__heading">
+                Максимум хитов ________________
+                <span class="vitality-block__subheading">{{
+                  +chosenClass.hitPerLvlValue + +(selectedAbilities | ability : 'dex-check')?.value
+                }}</span>
+              </p>
+              <p class="vitality-block__text">Текущие хиты</p>
+            </div>
+            <div class="vitality-block__temp">
+              <p class="vitality-block__text">Временные хиты</p>
+            </div>
+            <div class="vitality-block__medium">
+              <p class="vitality-block__value">{{ chosenClass.hitDiceValue }}</p>
+              <p class="vitality-block__text">Кость хитов</p>
+            </div>
+            <div class="vitality-block__medium">
+              <div class="vitality-block__death">
+                <p class="vitality-block__death-label">Успехи</p>
+                <div class="vitality-block__death-wrap">
+                  <span class="vitality-block__death-circle"></span>
+                  <span class="vitality-block__death-circle"></span>
+                  <span class="vitality-block__death-circle"></span>
+                </div>
+              </div>
+              <div class="vitality-block__death">
+                <p class="vitality-block__death-label">Провалы</p>
+                <div class="vitality-block__death-wrap">
+                  <span class="vitality-block__death-circle"></span>
+                  <span class="vitality-block__death-circle"></span>
+                  <span class="vitality-block__death-circle"></span>
+                </div>
+              </div>
+              <p class="vitality-block__text">Спасы от смерти</p>
+            </div>
+          </div>
+        </ng-container>
+        <div class="text-block">
+          <div class="weapons-block__row">
+            <p class="vitality-block__text">Название</p>
+            <p class="vitality-block__text">Бонус атаки</p>
+            <p class="vitality-block__text">Урон/вид</p>
+          </div>
+          <div class="text-block__textarea"></div>
+          <p class="vitality-block__text">Атаки и заклинания</p>
+        </div>
+        <div class="text-block">
+          <div class="text-block__textarea"></div>
+          <p class="vitality-block__text">Снаряжение</p>
+        </div>
+      </div>
+
+      <div class="result-list__body-column">
+        <div class="personality-block">
+          <div class="text-block">
+            <div class="text-block__textarea"></div>
+            <p class="vitality-block__text">Черты характера</p>
+          </div>
+          <div class="text-block">
+            <div class="text-block__textarea"></div>
+            <p class="vitality-block__text">Идеалы</p>
+          </div>
+          <div class="text-block">
+            <div class="text-block__textarea"></div>
+            <p class="vitality-block__text">Привязанности</p>
+          </div>
+          <div class="text-block">
+            <div class="text-block__textarea"></div>
+            <p class="vitality-block__text">Слабости</p>
+          </div>
+        </div>
+        <div class="text-block">
+          <div class="text-block__textarea"></div>
+          <p class="vitality-block__text">Умения и способности</p>
+        </div>
+      </div>
+    </div>
+    <button mat-button color="accent" mat-dialog-close>Закрыть</button>
+  </div>
 </div>

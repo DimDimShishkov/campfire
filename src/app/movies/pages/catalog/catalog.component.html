@@ -2,7 +2,7 @@
   <div id="stars"></div>
   <div id="stars2"></div>
   <div id="stars3"></div>
-  <app-header></app-header>
+  <app-header (openCharList)="openCharListModal()"></app-header>
 
   <section class="info">
     <div class="info__heading">
@@ -43,6 +43,7 @@
     [selectedRace]="selectedRace"
     [selectedClass]="selectedClass"
     [selectedParams]="selectedParams"
+    (setResult)="setAbilitiesEvent($event)"
   ></app-abilities>
 
   <!--  <div class="catalog__form">

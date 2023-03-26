@@ -12,9 +12,12 @@ export interface IGenre {
 }
 
 export interface IData {
-  card: ICard;
-  isLiked: boolean;
-  likeToggleEvent: (card: ICard) => void;
+  // card: ICard;
+  // isLiked: boolean;
+  // likeToggleEvent: (card: ICard) => void;
+  selectedRace: string;
+  selectedClass: string;
+  selectedAbilities: IAbility[];
 }
 
 // от сюда

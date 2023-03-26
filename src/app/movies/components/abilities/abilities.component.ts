@@ -51,7 +51,6 @@ export class AbilitiesComponent implements OnChanges {
             };
       });
       this.chosenClass = classJson.find((item) => item.name === this.selectedClass)!;
-      console.log(this.chosenClass);
     }
   }
 

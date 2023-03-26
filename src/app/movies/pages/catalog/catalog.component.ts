@@ -1,13 +1,13 @@
 import { Component, DoCheck } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ICard, IGenre, IParameters } from 'src/interface/page';
+import { IAbility, ICard, IGenre, IParameters } from 'src/interface/page';
 import Cards from '../../../../mockData/data.json';
 import Genres from '../../../../mockData/genres.json';
 import { ModalComponent } from '../../components/modal/modal.component';
 
 /**
  *
- * Итоговый компонент с Фильтром и Инпутом (Этап 3)
+ * Итоговый компонент
  */
 
 @Component({
@@ -25,6 +25,7 @@ export class CatalogComponent implements DoCheck {
   public selectedRace: string = 'Подлежит выбору';
   public selectedParams: IParameters[];
   public selectedClass: string = 'Подлежит выбору';
+  public selectedAbilities: IAbility[];
 
   constructor(public dialog: MatDialog) {}
 
@@ -88,5 +89,21 @@ export class CatalogComponent implements DoCheck {
   }
   setClassEvent(className: string) {
     this.selectedClass = className;
+  }
+  setAbilitiesEvent(abilities: IAbility[]) {
+    this.selectedAbilities = abilities;
+  }
+  openCharListModal() {
+    this.dialog.open(ModalComponent, {
+      data: {
+        selectedRace: this.selectedRace,
+        selectedClass: this.selectedClass,
+        selectedAbilities: this.selectedAbilities,
+      },
+      // overflowX: 'visible',
+      // width: '800px',
+
+      //  scrollStrategy:
+    });
   }
 }
