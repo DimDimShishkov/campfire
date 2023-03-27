@@ -1,4 +1,4 @@
-import { Component, DoCheck } from '@angular/core';
+import { Component, DoCheck, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IAbility, IParameters } from 'src/interface/page';
 import { ModalComponent } from '../../components/modal/modal.component';
@@ -17,8 +17,18 @@ export class CatalogComponent implements DoCheck {
   public selectedParams: IParameters[];
   public selectedClass: string = 'Подлежит выбору';
   public selectedAbilities: IAbility[];
+  public isMobileWidth: number;
 
   constructor(public dialog: MatDialog) {}
+
+  ngOnInit() {
+    this.isMobileWidth = window.innerWidth;
+  }
+  // Изменение размера окна
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.isMobileWidth = event.target.innerWidth;
+  }
 
   // переделать под RxJS и подпиской на localStorage
   ngDoCheck() {
@@ -45,7 +55,7 @@ export class CatalogComponent implements DoCheck {
         selectedAbilities: this.selectedAbilities,
       },
       // overflowX: 'visible',
-      // width: '800px',
+      minWidth: '700px',
 
       //  scrollStrategy:
     });

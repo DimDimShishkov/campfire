@@ -1,5 +1,5 @@
 <div mat-dialog-content class="modal">
-  <div class="result-list__container">
+  <div class="result-list__container" id="charList">
     <div class="result-list__header">
       <div class="result-list__name">
         <input name="name" type="text" class="result-list__name-input" placeholder="Введите имя персонажа" />
@@ -495,6 +495,18 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="modal__buttons">
+    <button
+      mat-button
+      color="primary"
+      printSectionId="charList"
+      ngxPrint
+      [useExistingCss]="true"
+      printTitle="Чарник персонажа"
+    >
+      Распечатать
+    </button>
     <button mat-button color="accent" mat-dialog-close>Закрыть</button>
   </div>
 </div>

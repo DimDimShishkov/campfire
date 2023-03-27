@@ -1,13 +1,10 @@
 <div class="catalog">
-  <div class="stars"></div>
-  <div class="stars2"></div>
-  <div class="stars3"></div>
-  <app-header (openCharList)="openCharListModal()"></app-header>
+  <app-header (openCharList)="openCharListModal()" [isMobileWidth]="isMobileWidth"></app-header>
 
   <section class="info">
     <div class="info__heading">
       <h1 class="info__title">Костёр</h1>
-      <p class="info__subtitle">
+      <p class="info__subheading">
         игра про мир, который себя не помнит и теней, которые обрели форму. Тени помнят лишь базовые вещи, ничего
         конкретного про себя и своё прошлое, но ими движет желание узнать, что таится в темноте и что ещё сохранилось.
       </p>
@@ -36,16 +33,30 @@
     </div>
   </section>
 
-  <app-race (setRace)="setRaceEvent($event)"></app-race>
-  <app-parameters (setParameters)="setParametersEvent($event)"></app-parameters>
-  <app-classes (setClass)="setClassEvent($event)"></app-classes>
-  <app-abilities
-    [selectedRace]="selectedRace"
-    [selectedClass]="selectedClass"
-    [selectedParams]="selectedParams"
-    (setResult)="setAbilitiesEvent($event)"
-  ></app-abilities>
+  <ng-container *ngIf="isMobileWidth >= 750; else templateA">
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    <app-race (setRace)="setRaceEvent($event)"></app-race>
+    <app-parameters (setParameters)="setParametersEvent($event)"></app-parameters>
+    <app-classes (setClass)="setClassEvent($event)"></app-classes>
+    <app-abilities
+      [selectedRace]="selectedRace"
+      [selectedClass]="selectedClass"
+      [selectedParams]="selectedParams"
+      (setResult)="setAbilitiesEvent($event)"
+    ></app-abilities>
+    <app-staff></app-staff>
+  </ng-container>
 
-  <app-staff></app-staff>
+  <ng-template #templateA>
+    <div class="info">
+      <p class="info__subheading info__more">
+        К сожалению, сайт не предназначен для работы на мобильных устройствах. Попробуйте сгенерировать персонажа с
+        компьютера.
+      </p>
+    </div>
+  </ng-template>
+
   <app-footer></app-footer>
 </div>

@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { NgxPrintModule } from 'ngx-print';
 
 import { AbilitiesComponent } from './components/abilities/abilities.component';
 import { AbilityItemComponent } from './components/ability-item/ability-item.component';
@@ -36,6 +37,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
     MatCheckboxModule,
     FormsModule,
     CdkAccordionModule,
+    NgxPrintModule,
   ],
   declarations: [
     CatalogComponent,

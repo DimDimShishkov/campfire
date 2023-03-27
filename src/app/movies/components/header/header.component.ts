@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, EventEmitter, HostListener, Inject, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Inject, Input, Output } from '@angular/core';
 
 /* interface IHeaderProps {
     isModalOpen: boolean;
@@ -13,7 +13,9 @@ import { Component, EventEmitter, HostListener, Inject, Output } from '@angular/
 })
 export class HeaderComponent {
   public scrollPosition: number = 0;
-  @Output() openCharList = new EventEmitter();
+  @Input() isMobileWidth: number;
+  @Output()
+  openCharList = new EventEmitter();
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(e: Event) {

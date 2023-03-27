@@ -7,5 +7,7 @@
   >
     <img src="assets/campfire.png" alt="костер" class="header__image" />
   </a>
-  <button class="header__button" (click)="openModal()">Показать персонажа</button>
+  <ng-container *ngIf="isMobileWidth >= 750">
+    <button class="header__button" (click)="openModal()">Показать персонажа</button>
+  </ng-container>
 </div>

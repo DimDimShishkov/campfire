@@ -28,4 +28,8 @@ export class ModalComponent implements OnChanges {
     this.selectedAbilities = this.data.selectedAbilities;
     this.chosenClass = classJson.find((item) => item.name === this.selectedClass)!;
   }
+
+  onPrint() {
+    window.print();
+  }
 }
