@@ -23,14 +23,16 @@
       [attr.aria-expanded]="accordionItem.expanded"
       [attr.aria-controls]="'accordion-body-' + index"
     >
-      <div class="accordion-item__heading">
-        <span
-          class="accordion-item__span"
-          [ngClass]="{ 'accordion-item__span_active': accordionItem.expanded }"
-          (click)="accordionItem.toggle()"
-        ></span>
+      <div class="accordion-item__heading" (click)="accordionItem.toggle()">
+        <span class="accordion-item__span" [ngClass]="{ 'accordion-item__span_active': accordionItem.expanded }"></span>
         <h3 class="accordion-item__title">{{ race.name }}</h3>
-        <button class="accordion-item__submit-button" (click)="handleSelectRace(race.name)">Выбрать</button>
+        <button
+          class="accordion-item__submit-button"
+          #raceSelectButton
+          (click)="handleSelectRace({ event: $event, race: race.name })"
+        >
+          Выбрать
+        </button>
       </div>
       <div
         class="accordion-item__body"

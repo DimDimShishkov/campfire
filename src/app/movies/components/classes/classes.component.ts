@@ -15,10 +15,12 @@ import { IClass } from 'src/interface/page';
 export class ClassesComponent {
   public classesArr: IClass[] = classJson;
   public expandedIndex = 0;
-  @ViewChild('raceSelectButton') raceSelectButton: ElementRef;
+  @ViewChild('classSelectButton') classSelectButton: ElementRef;
   @Output() setClass = new EventEmitter<string>();
 
-  handleSelectClass(race: string): void {
-    this.setClass.emit(race);
+  handleSelectClass({ event, className }: { event: Event; className: string }): void {
+    event.stopPropagation();
+    this.classSelectButton.nativeElement.focus();
+    this.setClass.emit(className);
   }
 }

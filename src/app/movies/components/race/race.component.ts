@@ -13,7 +13,9 @@ export class RaceComponent {
   @ViewChild('raceSelectButton') raceSelectButton: ElementRef;
   @Output() setRace = new EventEmitter<string>();
 
-  handleSelectRace(race: string): void {
+  handleSelectRace({ event, race }: { event: Event; race: string }): void {
+    event.stopPropagation();
+    this.raceSelectButton.nativeElement.focus();
     this.setRace.emit(race);
   }
 }
