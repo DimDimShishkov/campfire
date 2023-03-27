@@ -12,7 +12,6 @@ import { NgxPrintModule } from 'ngx-print';
 
 import { AbilitiesComponent } from './components/abilities/abilities.component';
 import { AbilityItemComponent } from './components/ability-item/ability-item.component';
-import { CardComponent } from './components/card/card.component';
 import { ClassesComponent } from './components/classes/classes.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -41,7 +40,6 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
   ],
   declarations: [
     CatalogComponent,
-    CardComponent,
     ModalComponent,
     HeaderComponent,
     RaceComponent,
@@ -57,4 +55,4 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
     AbilityItemComponent,
   ],
 })
-export class MoviesModule {}
+export class DungeonModule {}

@@ -4,11 +4,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MoviesModule } from './movies/movies.module';
+import { DungeonModule } from './dungeon/dungeon.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, MoviesModule, RouterModule],
+  imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, DungeonModule, RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })
