@@ -23,8 +23,6 @@
 .parameters__item {
   display: grid;
   grid-template-columns: 200px 400px 200px;
-  // grid-template-rows: 100px;
-  // gap: 30px;
   align-items: center;
   margin: 0 auto;
 
@@ -89,6 +87,7 @@
   justify-content: center;
   align-items: center;
   border: none;
+  border-radius: 5px;
 }
 
 .parameters__result {
@@ -105,6 +104,7 @@
   align-items: center;
   padding: 0;
   margin: 0;
+  border-radius: 10px;
 }
 
 .parameters__error {

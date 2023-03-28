@@ -42,10 +42,14 @@ export class ParametersComponent implements OnInit {
           return { ...el, value: this.resultValue, bonus: this.bonusPipe.transform(this.resultValue) };
         } else return el;
       }));
-    } else if (item[1] === 'increase' && this.summaryParam < 75) {
+    } else if (item[1] === 'increase' && this.summaryParam < 78) {
       return (this.parametersArr = this.parametersArr.map((el) => {
         if (el.nameEN === item[0] && el.value < 15) {
           this.summaryParam = el.value > 12 ? this.summaryParam + 2 : this.summaryParam + 1;
+          if (this.summaryParam > 78) {
+            this.summaryParam = this.summaryParam - 2;
+            return el;
+          }
           this.resultValue = el.value + 1;
           return { ...el, value: this.resultValue, bonus: this.bonusPipe.transform(this.resultValue) };
         } else return el;

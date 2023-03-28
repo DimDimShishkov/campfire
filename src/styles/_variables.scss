@@ -62,7 +62,8 @@ $main-red: #f44366;
       }
     }
     &__span {
-      background: url(/assets/accordion.png);
+      background: url(../assets/accordion.png);
+      // background: url(/assets/accordion.png);
       transition: all 0.3s ease;
       width: 30px;
       height: 30px;

@@ -1,14 +1,16 @@
 <div class="abilities__item">
   <div class="abilities__text-item">
-    <label [ngClass]="{ abilities__label_active: isChecked }" class="abilities__label" [htmlFor]="itemName">
-      <input
-        class="abilities__input"
-        id="{{ itemName }}"
-        type="checkbox"
-        checked="{{ isChecked }}"
-        (click)="onChange()"
-      />
-    </label>
+    <ng-container *ngIf="itemText">
+      <label [ngClass]="{ abilities__label_active: isChecked }" class="abilities__label" [htmlFor]="itemName">
+        <input
+          class="abilities__input"
+          id="{{ itemName }}"
+          type="checkbox"
+          checked="{{ isChecked }}"
+          (click)="onChange()"
+        />
+      </label>
+    </ng-container>
     <p class="abilities__subtitle">{{ itemText ? itemText : 'Спасбросок' }}</p>
   </div>
   <div class="abilities__number-item">

@@ -24,6 +24,7 @@ export class AbilitiesComponent implements OnChanges {
   public abilitiesArr: IAbility[] = abilitiesJson;
   public resultArr: IAbility[] = [];
   public chosenClass: IClass;
+  public abilitiesCounter: number;
   private findParam: IParameters | undefined;
   private resultParam: number | string;
 
@@ -51,19 +52,23 @@ export class AbilitiesComponent implements OnChanges {
             };
       });
       this.chosenClass = classJson.find((item) => item.name === this.selectedClass)!;
+      this.abilitiesCounter = this.chosenClass.skillsCounter;
     }
   }
-
   valueHandler(v: string, mode: number) {
     return this.abilitiesArr.find((item) => item.name === v)?.value;
   }
-
   abilityHandler(v: string) {
     return this.abilitiesArr.find((item) => item.name === v);
   }
 
   handleChangeSpecial(obj: { id: string; checked: boolean }) {
     const { id, checked } = obj;
+    this.abilitiesCounter = checked ? this.abilitiesCounter - 1 : this.abilitiesCounter + 1;
+    if (this.abilitiesCounter < 0) {
+      this.abilitiesCounter = 0;
+      return;
+    }
     this.abilitiesArr = this.abilitiesArr.map((el) => {
       if (el.name === id) {
         this.resultParam = checked ? +el.value + 2 : +el.value - 2;

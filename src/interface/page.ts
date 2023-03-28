@@ -54,6 +54,7 @@ export interface IClass {
   armors: string;
   weapons: string;
   skills: string;
+  skillsCounter: number;
   feature: string;
   featureDesc: string;
   evolutionName: string;

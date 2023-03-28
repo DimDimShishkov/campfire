@@ -99,20 +99,23 @@
 }
 
 .icon_tg {
-  background-image: url(/assets/contacts/tg.png);
+  // background-image: url(/assets/contacts/tg.png);
+  background-image: url(../../../../assets/contacts/tg.png);
 }
 
 .icon_ln {
-  background-image: url(/assets/contacts/linkedin.png);
+  background-image: url(../../../../assets/contacts/linkedin.png);
+  // background-image: url(/assets/contacts/linkedin.png);
 }
 
 .icon_gh {
-  background-image: url(/assets/contacts/github.png);
+  background-image: url(../../../../assets/contacts/github.png);
+  // background-image: url(/assets/contacts/github.png);
 }
 
 .icon_habr {
-  // background-image: url(../../../../assets/contacts/habr.png);
-  background-image: url(/assets/contacts/habr.png);
+  background-image: url(../../../../assets/contacts/habr.png);
+  // background-image: url(/assets/contacts/habr.png);
 }
 
 .footer__button {

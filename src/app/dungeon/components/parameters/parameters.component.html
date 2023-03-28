@@ -5,9 +5,9 @@
     Далее вам нужно распределить параметры, чтобы узнать, в чём ваш персонаж хорош, а в чём нет.
   </p>
   <p class="section__description">
-    Чтобы распределить параметры, можно перетащить значения 15, 14, 13, 12, 10, 8 в ячейки или расставить вручную.
+    Бонус игры в мир Костра: Вы получаете либо +2 к одному параметру и +1 к другому, либо +1 к трём параметрам.
   </p>
-  <p class="section__description">Главное требование, чтобы сумма всех очков не превышала 75 очков.</p>
+  <p class="section__description">Главное требование, чтобы сумма всех очков не превышала 78 очков.</p>
   <p class="section__description">Рекомендуется значение параметра не меньше 8 и не больше 15.</p>
   <form class="parameters__form">
     <div class="parameters__items">
@@ -30,7 +30,8 @@
       </div>
     </div>
     <div class="parameters__items">
-      <p>Осталось очков: {{ 75 - summaryParam }}</p>
+      <p class="parameters__title">Осталось очков:</p>
+      <p class="parameters__title">{{ 78 - summaryParam }}</p>
       <button type="submit" class="parameters__submit" (click)="handleSubmitForm()">Сохранить</button>
     </div>
   </form>
