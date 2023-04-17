@@ -1,6 +1,6 @@
 # Генератор персонажа для Dungeons & Dragons во вселенной «Костер»
 
-![image](https://raw.githubusercontent.com/DimDimShishkov/dumpling-redux/main/dumplings.gif)
+![image](https://raw.githubusercontent.com/DimDimShishkov/campfire/main/src/mockData/Example.png)
 
 ### Обзор
 
