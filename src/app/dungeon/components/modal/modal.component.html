@@ -489,10 +489,15 @@
             <p class="vitality-block__text">Слабости</p>
           </div>
         </div>
-        <div class="text-block">
-          <div class="text-block__textarea"></div>
-          <p class="vitality-block__text">Умения и способности</p>
-        </div>
+
+        <ng-container *ngIf="chosenClass; else templateA">
+          <div class="text-block">
+            <p class="vitality-block__text">{{ chosenClass.evolution[0].abilities }}</p>
+
+            <div class="text-block__textarea"></div>
+            <p class="vitality-block__text">Умения и способности</p>
+          </div>
+        </ng-container>
       </div>
     </div>
   </div>

@@ -1,7 +1,7 @@
 import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { IAbility, IClass, IData } from 'src/interface/page';
 import classJson from '@mockData/classes.json';
+import { IAbility, IClass, IData } from 'src/interface/page';
 
 /**
  * @title Диалоговое окно с фильмом (Этап 2)
@@ -27,6 +27,7 @@ export class ModalComponent implements OnChanges {
     this.selectedClass = this.data.selectedClass;
     this.selectedAbilities = this.data.selectedAbilities;
     this.chosenClass = classJson.find((item) => item.name === this.selectedClass)!;
+    console.log(this.chosenClass);
   }
 
   onPrint() {
